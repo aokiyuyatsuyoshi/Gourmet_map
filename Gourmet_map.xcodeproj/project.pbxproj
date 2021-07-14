@@ -13,6 +13,7 @@
 		24E0C8E0269ED67D00703B08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E0C8DE269ED67D00703B08 /* Main.storyboard */; };
 		24E0C8E2269ED68800703B08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24E0C8E1269ED68800703B08 /* Assets.xcassets */; };
 		24E0C8E5269ED68800703B08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E0C8E3269ED68800703B08 /* LaunchScreen.storyboard */; };
+		24E0C8F9269F1B4C00703B08 /* webViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E0C8F8269F1B4C00703B08 /* webViewController.swift */; };
 		50375449E60208B9B555F201 /* Pods_Gourmet_map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CE8DA1A68C752CA49FE0A9 /* Pods_Gourmet_map.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		24E0C8E1269ED68800703B08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24E0C8E4269ED68800703B08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24E0C8E6269ED68800703B08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24E0C8F8269F1B4C00703B08 /* webViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewController.swift; sourceTree = "<group>"; };
 		25F040ADD82179ABA5D1319E /* Pods-Gourmet_map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gourmet_map.debug.xcconfig"; path = "Target Support Files/Pods-Gourmet_map/Pods-Gourmet_map.debug.xcconfig"; sourceTree = "<group>"; };
 		79CE8DA1A68C752CA49FE0A9 /* Pods_Gourmet_map.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gourmet_map.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA3BCE9D7EC9296B4D671F3 /* Pods-Gourmet_map.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gourmet_map.release.xcconfig"; path = "Target Support Files/Pods-Gourmet_map/Pods-Gourmet_map.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,15 +65,40 @@
 		24E0C8D7269ED67D00703B08 /* Gourmet_map */ = {
 			isa = PBXGroup;
 			children = (
-				24E0C8D8269ED67D00703B08 /* AppDelegate.swift */,
-				24E0C8DA269ED67D00703B08 /* SceneDelegate.swift */,
-				24E0C8DC269ED67D00703B08 /* ViewController.swift */,
-				24E0C8DE269ED67D00703B08 /* Main.storyboard */,
-				24E0C8E1269ED68800703B08 /* Assets.xcassets */,
-				24E0C8E3269ED68800703B08 /* LaunchScreen.storyboard */,
+				24E0C8F7269F1B1E00703B08 /* controller */,
+				24E0C8F6269F1B1800703B08 /* view */,
+				24E0C8F5269F1B1200703B08 /* model */,
 				24E0C8E6269ED68800703B08 /* Info.plist */,
 			);
 			path = Gourmet_map;
+			sourceTree = "<group>";
+		};
+		24E0C8F5269F1B1200703B08 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		24E0C8F6269F1B1800703B08 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				24E0C8DE269ED67D00703B08 /* Main.storyboard */,
+				24E0C8E1269ED68800703B08 /* Assets.xcassets */,
+				24E0C8E3269ED68800703B08 /* LaunchScreen.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		24E0C8F7269F1B1E00703B08 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				24E0C8D8269ED67D00703B08 /* AppDelegate.swift */,
+				24E0C8DA269ED67D00703B08 /* SceneDelegate.swift */,
+				24E0C8DC269ED67D00703B08 /* ViewController.swift */,
+				24E0C8F8269F1B4C00703B08 /* webViewController.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		414DFEA5827DEA2096A8FF0B /* Frameworks */ = {
@@ -208,6 +235,7 @@
 				24E0C8DD269ED67D00703B08 /* ViewController.swift in Sources */,
 				24E0C8D9269ED67D00703B08 /* AppDelegate.swift in Sources */,
 				24E0C8DB269ED67D00703B08 /* SceneDelegate.swift in Sources */,
+				24E0C8F9269F1B4C00703B08 /* webViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
