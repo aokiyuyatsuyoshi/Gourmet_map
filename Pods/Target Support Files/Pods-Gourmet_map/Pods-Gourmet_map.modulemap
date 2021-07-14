@@ -1,0 +1,6 @@
+framework module Pods_Gourmet_map {
+  umbrella header "Pods-Gourmet_map-umbrella.h"
+
+  export *
+  module * { export * }
+}
