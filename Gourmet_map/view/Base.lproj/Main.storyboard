@@ -36,6 +36,8 @@
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </view>
                     <connections>
+                        <outlet property="SearchField" destination="nGj-t0-g1f" id="P0a-Fg-qWr"/>
+                        <outlet property="mapview" destination="8Am-rH-jYP" id="T3K-ZO-WaV"/>
                         <segue destination="qW8-YR-323" kind="presentation" id="LPu-nI-aW2"/>
                     </connections>
                 </viewController>
