@@ -30,6 +30,9 @@
                                 <rect key="frame" x="356" y="52" width="52" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="search"/>
+                                <connections>
+                                    <action selector="Search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B2B-wz-OUd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -38,7 +41,7 @@
                     <connections>
                         <outlet property="SearchField" destination="nGj-t0-g1f" id="P0a-Fg-qWr"/>
                         <outlet property="mapview" destination="8Am-rH-jYP" id="T3K-ZO-WaV"/>
-                        <segue destination="qW8-YR-323" kind="presentation" id="LPu-nI-aW2"/>
+                        <segue destination="qW8-YR-323" kind="presentation" identifier="detail" id="LPu-nI-aW2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -77,6 +80,10 @@
                         <viewLayoutGuide key="safeArea" id="U6I-pi-ipc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="ImageView" destination="Peo-yF-QQO" id="HZo-YU-qMd"/>
+                        <outlet property="webView" destination="RKQ-WT-NWe" id="9GY-VQ-5ze"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9We-6h-0Sd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
