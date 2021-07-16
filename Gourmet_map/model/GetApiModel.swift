@@ -42,22 +42,23 @@ class GetApiModel{
                 do {
                     let json:JSON = try JSON(data: response.data!)
                     //取得できた店の数
-                    var totalCount = json["results"]["results_available"].int
+                    var totalCount = Int(json["results"]["results_returned"].string!)
+//                    if totalCount! > 50{
+//                        totalCount = 50
+//                    }
                     
-                    for i in 0...totalCount!-1{
-                        let  Response_Results = StructData(CurrentLatitude:json["results"]["shop"][i]["lat"].double, CurrentLongitude: json["results"]["shop"][i]["lng"].double,CurrentURL:json["results"]["shop"][i]["urls"]["pc"].string,CurrentShopName:json["results"]["shop"][i]["name"].string,CurrentShopImage:json["results"]["shop"][i]["logo_image"].string)
-                        //取得したデータをどんどん配列へ格納する
-                        self.StructDataArray.append(Response_Results)
-                        print("lat:" + String(json["results"]["shop"][i]["lat"].double!))
-                        print("log:" + String(json["results"]["shop"][i]["lng"].double!))
-                        print("URL:" + json["results"]["shop"][i]["urls"]["pc"].string!)
-                        print("Name:" + json["results"]["shop"][i]["name"].string!)
-                        print("Image:" + json["results"]["shop"][i]["logo_image"].string!)
+                    if totalCount != 0{
+                        for i in 0...totalCount!-1{
+                            let  Response_Results = StructData(CurrentLatitude:json["results"]["shop"][i]["lat"].double, CurrentLongitude: json["results"]["shop"][i]["lng"].double,CurrentURL:json["results"]["shop"][i]["urls"]["pc"].string,CurrentShopName:json["results"]["shop"][i]["name"].string,CurrentShopImage:json["results"]["shop"][i]["logo_image"].string)
+                            //取得したデータをどんどん配列へ格納する
+                            self.StructDataArray.append(Response_Results)
+                            print("Lat:" + String(json["results"]["shop"][i]["lat"].double!))
+                            print("Lon:" + String(json["results"]["shop"][i]["lng"].double!))
 
-
-          
-
+                        }
                     }
+                    
+
                     //プロトコルを使用して値を渡す
                     self.getShopDelegate?.GetData(array: self.StructDataArray, count: totalCount!)
                 } catch  {

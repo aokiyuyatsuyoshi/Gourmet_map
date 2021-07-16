@@ -40,7 +40,7 @@
                     </view>
                     <connections>
                         <outlet property="SearchField" destination="nGj-t0-g1f" id="P0a-Fg-qWr"/>
-                        <outlet property="mapview" destination="8Am-rH-jYP" id="T3K-ZO-WaV"/>
+                        <outlet property="mapView" destination="8Am-rH-jYP" id="kok-li-U5h"/>
                         <segue destination="qW8-YR-323" kind="presentation" identifier="detail" id="LPu-nI-aW2"/>
                     </connections>
                 </viewController>
