@@ -10,14 +10,10 @@ import MapKit
 import Lottie
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate,GetShopdataDelegate{
-
-    
-
-    
     //検索ワードを入力するTextField
     @IBOutlet weak var SearchField: UITextField!
-    //マップを使用する
-    @IBOutlet weak var mapview: MKMapView!
+
+    @IBOutlet weak var mapView: MKMapView!
     //CLLocationMAnagerのインスタンス
     var locationManager = CLLocationManager()
     //現在の経度
@@ -93,11 +89,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //現在地を更新
         locationManager.startUpdatingLocation()
         
-        mapview.delegate = self
+        mapView.delegate = self
         //mapのタイプをstandardに設定
-        mapview.mapType = .standard
+        mapView.mapType = .standard
         //現在地からマップがスタートするかどうか
-        mapview.userTrackingMode = .followWithHeading
+        mapView.userTrackingMode = .followWithHeading
         
     }
     //現在地が変化するごとに勝手に呼ばれる
@@ -113,13 +109,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //サーチボタンが押された時の処理
     @IBAction func Search(_ sender: Any) {
+        //アノテーションを消去する
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
         //テキストフィールドを閉じる
         SearchField.resignFirstResponder()
         //アニメーションを開始
         StartAnimation()
         
         //実際にリクエストを投げるURL
-        let API = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=d8b3d2e9d5b9007c&lat=\(CurrentLatitude)&lng=\(CurrentLongitude)&keyword=\(SearchField.text!)&range=3&count=50&format=json"
+        let API = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=d8b3d2e9d5b9007c&lat=\(CurrentLatitude)&lng=\(CurrentLongitude)&keyword=\(SearchField.text!)&range=3&format=json"
         print("APIのキーは:" + API)
         //GetApiModelに現在の緯度経度とURLを渡す
         var getApiModel = GetApiModel(latitude: CurrentLatitude, longitude: CurrentLongitude, url: API)
@@ -142,30 +141,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //mapにアノテーションをつける
     func MapAnnotation(shopArray:[StructData]){
-        //アノテーションを消去する
-        mapview.removeAnnotation(mapview.annotations as! MKAnnotation)
+
         //新しくアノテーションを行うので空にする
         URLArray = []
         ImageArray = []
         NameArray = []
-        
-        for i in 0...ShopCount-1{
-            //MKPointAnnotationのインスタンス
-            var Annotation = MKPointAnnotation()
-            //緯度経度をアノテーションにセットする
-            Annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(String(shopArray[i].CurrentLatitude!))!, CLLocationDegrees(String(shopArray[i].CurrentLongitude!))!)
-            //アノテーションのタイトルに店の名前
-            Annotation.title = shopArray[i].CurrentShopName
-            //URLを配列に格納
-            URLArray.append(shopArray[i].CurrentURL!)
-            //imageURLを配列に格納
-            ImageArray.append(shopArray[i].CurrentShopImage!)
-            //店舗名を配列に格納
-            NameArray.append(shopArray[i].CurrentShopName!)
-            //アノテーションに追加
-            mapview.addAnnotation(Annotation)
+        if ShopCount == 0 {
             
+        }else{
+            for i in 0...ShopCount-1{
+                //MKPointAnnotationのインスタンス
+                var Annotation = MKPointAnnotation()
+                //緯度経度をアノテーションにセットする
+                Annotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(String(shopArray[i].CurrentLatitude!))!, CLLocationDegrees(String(shopArray[i].CurrentLongitude!))!)
+                //アノテーションのタイトルに店の名前
+                Annotation.title = shopArray[i].CurrentShopName
+                //URLを配列に格納
+                URLArray.append(shopArray[i].CurrentURL!)
+                //imageURLを配列に格納
+                ImageArray.append(shopArray[i].CurrentShopImage!)
+                //店舗名を配列に格納
+                NameArray.append(shopArray[i].CurrentShopName!)
+                //アノテーションに追加
+                mapView.addAnnotation(Annotation)
+                
+            }
+
         }
+
 //        //テキストフィールドを閉じる
 //        SearchField.resignFirstResponder()
         
@@ -174,7 +177,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //アノテーションが選択された時に呼ばれる
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         //これで現在どこが選択されているかがわかる
-        SelectedNumber = NameArray.firstIndex(of: (view.annotation?.title) as! String)!
+        SelectedNumber = NameArray.firstIndex(of: (view.annotation?.title)!!)!
         performSegue(withIdentifier: "detail", sender: nil)
     }
     

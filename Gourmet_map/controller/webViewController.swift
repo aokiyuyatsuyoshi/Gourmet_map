@@ -20,6 +20,10 @@ class webViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //sdImageにセットする
+        ImageView.sd_setImage(with: NSURL(string: ImageURL)! as URL,completed:nil)
+        let request = URLRequest(url: NSURL(string: URL) as! URL)
+        webView.load(request)
 
         // Do any additional setup after loading the view.
     }
