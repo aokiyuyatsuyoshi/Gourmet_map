@@ -6,9 +6,18 @@
 //
 
 import UIKit
+import WebKit
+import SDWebImage
 
 class webViewController: UIViewController {
-
+    //ViewControllerから渡される値
+    var URL = String()
+    var ShopName = String()
+    var ImageURL = String()
+    
+    @IBOutlet weak var ImageView: UIImageView!
+    @IBOutlet weak var webView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
